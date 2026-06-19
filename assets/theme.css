@@ -450,21 +450,25 @@ img, svg { max-width: 100%; }
 }
 
 .chart-card {
-    position: relative; /* important */
+    position: relative;
 
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-card);
-    padding: 18px 20px 8px;
+
+    padding: 18px 20px 12px;
 
     box-shadow: var(--shadow-card);
+
     min-width: 0;
-    min-height: 320px;
+    min-height: 340px; /* ✅ augmente un peu */
 
-    overflow: visible; /* ✅ réactivé mais sécurisé avec padding et hauteur */
+    overflow: hidden; /* ✅ OBLIGATOIRE en prod */
 
-    z-index: 1; /* évite les chevauchements */
+    display: flex;
+    flex-direction: column;
 }
+
 
 .chart-card .plotly-graph-div {
     position: relative;
