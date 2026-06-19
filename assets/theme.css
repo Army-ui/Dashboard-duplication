@@ -469,7 +469,7 @@ img, svg { max-width: 100%; }
     flex-direction: column;
 }
 
-
+.chart-card .js-plotly-plot,
 .chart-card .plotly-graph-div {
     position: relative;
     z-index: 0;
