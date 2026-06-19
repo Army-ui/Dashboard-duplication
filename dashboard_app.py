@@ -239,11 +239,11 @@ app.layout = html.Div(
                     children=[
                         html.Div([
                             en_tete_section("titre-unite", "", "sous-titre-unite", ""),
-                            dcc.Graph(id="graphique-unite", config={"displayModeBar": False, "responsive": True}, style={"width": "100%"}),
+                            dcc.Graph(id="graphique-unite", config={"displayModeBar": False, "responsive": True}, style={"width": "100%", "height": "100%"}),
                         ], className="chart-card"),
                         html.Div([
                             en_tete_section("titre-depot", "", "sous-titre-depot", ""),
-                            dcc.Graph(id="graphique-depot", config={"displayModeBar": False, "responsive": True}, style={"width": "100%"}),
+                            dcc.Graph(id="graphique-depot", config={"displayModeBar": False, "responsive": True}, style={"width": "100%", "height": "100%"}),
                         ], className="chart-card"),
                     ],
                 ),
@@ -254,11 +254,11 @@ app.layout = html.Div(
                     children=[
                         html.Div([
                             en_tete_section("titre-extension", "", "sous-titre-extension", ""),
-                            dcc.Graph(id="graphique-extension", config={"displayModeBar": False, "responsive": True}, style={"width": "100%"}),
+                            dcc.Graph(id="graphique-extension", config={"displayModeBar": False, "responsive": True}, style={"width": "100%", "height": "100%"}),
                         ], className="chart-card"),
                         html.Div([
                             en_tete_section("titre-type", "", "sous-titre-type", ""),
-                            dcc.Graph(id="graphique-type", config={"displayModeBar": False, "responsive": True}, style={"width": "100%"}),
+                            dcc.Graph(id="graphique-type", config={"displayModeBar": False, "responsive": True}, style={"width": "100%", "height": "100%"}),
                         ], className="chart-card"),
                     ],
                 ),
@@ -395,13 +395,14 @@ def rafraichir_interface(langue, theme, depot, unite, type_dup):
 
     # ── Mise en forme Plotly commune aux 4 graphiques ────────────────────
     layout_commun = dict(
-        plot_bgcolor=couleurs["bg_card"],
-        paper_bgcolor=couleurs["bg_card"],
-        font_color=couleurs["text_secondary"],
-        font_family="IBM Plex Sans, sans-serif",
-        margin=dict(l=10, r=10, t=10, b=70),
-        height=300,
-    )
+    plot_bgcolor=couleurs["bg_card"],
+    paper_bgcolor=couleurs["bg_card"],
+    font_color=couleurs["text_secondary"],
+    font_family="IBM Plex Sans, sans-serif",
+    margin=dict(l=20, r=20, t=20, b=70),
+    autosize=True  # ✅ IMPORTANT
+   )
+
 
     # ── Graphique 1 : barres horizontales par unité métier ──────────────
     agg_unite = (
